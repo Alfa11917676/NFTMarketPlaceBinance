@@ -33,4 +33,12 @@ contract escrow is whitelistCheck, Ownable {
         token.transfer(whitelist.receiverAddress,amount);
         emit Withdrawn(msg.sender, whitelist.receiverAddress, amount);
     }
+
+    function addTokenAddress (address _token) external onlyOwner {
+        token = IERC20(_token);
+    }
+
+    function addSigner (address _signature) external onlyOwner {
+        signer = _signature;
+    }
 }
