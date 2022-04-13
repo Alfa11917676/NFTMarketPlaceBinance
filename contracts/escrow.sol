@@ -21,7 +21,7 @@ contract escrow is whitelistCheck, Ownable {
         _timesDeposited[msg.sender][whitelist.receiverAddress]+=1;
         _deposits[msg.sender][_timesDeposited[msg.sender][whitelist.receiverAddress]] = whitelist._amount;
         token.transferFrom(msg.sender, address(this), whitelist._amount);
-        Deposited(whitelist.senderAddress,whitelist.receiverAddress,whitelist._amount);
+        emit Deposited(whitelist.senderAddress,whitelist.receiverAddress,whitelist._amount);
     }
 
     function withdraw(Whitelist memory whitelist, uint slotId ) external {
